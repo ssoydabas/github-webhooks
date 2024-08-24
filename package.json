@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "src/app.ts",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node ./dist/app.js",
     "build": "tsc",
-    "dev": "ts-node-dev src/app.ts"
+    "dev": "ts-node-dev ./src/app.ts"
   },
   "keywords": [
     "github",
