@@ -13,11 +13,12 @@ router.post("/", (req: Request, res: Response) => {
   console.log(" ");
   console.log(" ");
   console.log(`Received GitHub event: ${event}`);
-  const delivery = req.headers["x-github-delivery"];
+
+  const repository = req.body.repository.full_name;
   console.log(" ");
   console.log(" ");
   console.log(" ");
-  console.log("Github delivery", delivery);
+  console.log(repository);
   console.log(" ");
   console.log(" ");
   console.log(" ");
