@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { exec } from "child_process";
 import { appsToListen } from "../constants";
+import path from "path";
 
 const router = express.Router();
 
@@ -15,7 +16,13 @@ router.post("/", (req: Request, res: Response) => {
   const repositoryName = repository.split("/")[1];
 
   if (isPushEvent) {
-    exec(`../bash/deploy/${repositoryName}.sh`, (error, stdout, stderr) => {
+    const scriptPath = path.resolve(
+      __dirname,
+      "../bash/deploy",
+      `${repositoryName}.sh`
+    );
+
+    exec(scriptPath, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing script: ${error}`);
         return res.status(500).send("Script execution failed");
