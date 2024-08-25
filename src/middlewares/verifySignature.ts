@@ -7,7 +7,11 @@ export const verifySignature = (
   buf: Buffer,
   encoding: string
 ) => {
+  console.log("req.headers", req.headers);
   const authorization = req.headers["authorization"] as string;
+  console.log("authorization", authorization);
+  const x = req.get("authorization");
+  console.log("x", x);
   if (!authorization) {
     console.error("Authorization header missing");
     res.status(401).send("Authorization header missing");
