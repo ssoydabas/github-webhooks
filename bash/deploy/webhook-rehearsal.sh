@@ -1,7 +1,16 @@
 #!/bin/bash
 
-FILE_PATH="$HOME/date.txt"
+REPO_PATH="$HOME/apps/personal/webhook-rehearsal"
+BRANCH="main"
 
-date > "$FILE_PATH"
+cd "$REPO_PATH" || exit
 
-echo "Date written to $FILE_PATH"
+git fetch origin "$BRANCH"
+
+git reset --hard origin/"$BRANCH"
+
+docker-compose down
+
+docker-compose up --build -d
+
+echo "Repository updated and Docker containers restarted successfully."
