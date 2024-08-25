@@ -12,7 +12,7 @@ export const verifySignature = (
   console.log("authorization", authorization);
   const x = req.get("authorization");
   console.log("x", x);
-  if (!authorization) {
+  if (authorization === "") {
     console.error("Authorization header missing");
     res.status(401).send("Authorization header missing");
     return;
