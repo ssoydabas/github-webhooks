@@ -18,7 +18,7 @@ router.post("/", (req: Request, res: Response) => {
   if (isPushEvent) {
     const scriptPath = path.resolve(
       __dirname,
-      "../bash/deploy",
+      "../../bash/deploy",
       `${repositoryName}.sh`
     );
 
